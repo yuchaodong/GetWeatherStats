@@ -114,6 +114,19 @@ class WeatherStats {
     }
 }
 
+let classMemory = {
+  WeatherStats
+}
+
+let init = function() {
+  // let displayMinVal = document.getElementById('displayMin');
+  let min = document.getElementById("displayMin")
+  let option = document.createElement("option")
+  option.value = WeatherStats.constructor
+  option.text = WeatherStats.showMin
+  min.addEventListener(option)
+  // displayMinVal.value = WeatherStats.showMin;
+}
 
 let fiveDayForecast = new WeatherStats();
 
@@ -190,3 +203,8 @@ fiveDayForecast.humidity = function(val) {
   let humidity = totalHumidity / weatherData.length;
   return `Average humidity is ${humidity}`;
 }
+
+const displayMin = new classMemory[document.getElementById('displayMin').value]
+// const displayMax
+// const displayMean
+// const displayMode

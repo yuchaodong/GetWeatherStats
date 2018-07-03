@@ -16,7 +16,7 @@
 
 </head>
 
-<body>
+<body >
     <h1>Weather Stats Generator</h1>
     <div> <h3>Select City:</h3> 
     <input type='text' /></div>
@@ -24,9 +24,11 @@
     <h3>Select Date Range:</h3>
     <input type='date' id='start' />
     <input type='date' id='end' />
-    <button onclick=alert('hey')>Get data</button>
+    <button onclick='displayMin()'>Get data</button>
+    <!-- // event handler here
+    // onclick, invoke functions (min, max, etc.) -->
 
-
+    <div id='displayMin'></div>
     <h3>Min Temperature for _____ from _____ to _____: </h3>
     <h3>Max Temperature for _____ from _____ to _____: </h3>
     <h3>Mode Temperature for _____ from _____ to _____: </h3>
