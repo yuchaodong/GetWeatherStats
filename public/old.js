@@ -79,7 +79,6 @@ function promisedForecast(cityName, countryCode) {
   return axios.get(endpoint)
 }
 
-
 function testUsingTracker() {
   let testing = new DataTracker();
   testing.insert(7)
@@ -87,7 +86,6 @@ function testUsingTracker() {
   testing.insert(9)
   console.log(testing.showMean());
 }
-
 
 function testTracker () {
   const humidityTracker = new DataTracker();
@@ -148,17 +146,83 @@ function testInputForStats () {
   })
 }
 
+function promisedWeatherStats (cityName, countryCode) {
+  const humidityTracker = new DataTracker();
+  const morningTracker = new DataTracker();
+  const dayTracker = new DataTracker();
+  const nightTracker = new DataTracker();
 
+  return promisedForecast(cityName, countryCode).then(function (data) {
+    for (let dayData of data.data.list) {
+      humidityTracker.insert(dayData.humidity)
+      morningTracker.insert(dayData.temp.morn)
+      dayTracker.insert(dayData.temp.day)
+      nightTracker.insert(dayData.temp.night)
+    }
+    return {
+      'morning': {
+        'min': morningTracker.showMin(), 
+        'max': morningTracker.showMax(),
+        'mean': morningTracker.showMean(),
+        'mode': morningTracker.showMode()   
+      },
+      'day': {
+        'min': dayTracker.showMin(), 
+        'max': dayTracker.showMax(),
+        'mean': dayTracker.showMean(),
+        'mode': dayTracker.showMode()   
+      },
+      'night': {
+        'min':  nightTracker.showMin(), 
+        'max':  nightTracker.showMax(),
+        'mean':  nightTracker.showMean(),
+        'mode':  nightTracker.showMode()   
+      },
+      'humidity': {
+        'min': humidityTracker.showMin(), 
+        'max': humidityTracker.showMax(),
+        'mean': humidityTracker.showMean(),
+        'mode': humidityTracker.showMode()
+      }
+    }
+  })
+}
 
+function testTables () {
+  const table = document.getElementById('statsTable');
+  const row = table.insertRow();
+  const cell1 = row.insertCell();
+  const cell2 = row.insertCell();
+  row.insertCell().innerHTML = 'test3';
+  cell1.innerHTML = 'test'
+  cell2.innerHTML = 'test2'
+}
 
+function testGeneratingTable () {
+  const table = document.getElementById('statsTable');
 
+  for (let i = 0; i < 5; i++) {
+    const row = table.insertRow();
+    for (let j = 0; j < 5; j++) {
+      row.insertCell().innerHTML = [i, j];
+    }
+  }
+}
 
+function testFillTable () {
+  promisedWeatherStats('seattle', 'us').then(function (weatherData) {  
+    const dataMatrix = generateWeatherDataMatrix(weatherData)
+    fillTable(dataMatrix)
+  })
+}
 
 // testingClickhandler()
 // testEndpoint()
 // testTracker()
-// testUsingTracker()
-//testButtonToForecast()
-//testParamsForStats()
+//  testUsingTracker()
+// testButtonToForecast()
+// testParamsForStats()
 // testInput()
 // testInputForStats()
+// testTables()
+testGeneratingTable()
