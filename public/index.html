@@ -1,50 +1,23 @@
 <!doctype html>
 
 <html lang="en">
-<head>
-    <!-- <meta charset="utf-8">
+    <head>
+        <meta charset="utf-8">
+        <title>Weather Stats Generator</title>
+        <!-- <link rel="stylesheet" href="/styles.css"> -->
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    </head>
 
-    <title>Weather Stats Generator</title>
+    <body >
+        <h1>Weather Stats Generator</h1>
+        <div> <h3>Select City and Country:</h3> 
 
-    <link rel="stylesheet" href="/styles.css"> -->
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    
-    <!-- 446bc4479be13856e4628226251f3d58 -->
+        <input type='text' id='cityInput' placeholder= 'enter city name' />
+        <input type='text' id='countryInput' placeholder= 'enter country code' />
+        <button id='submitButton'>Submit</button>
+        <div id='resultText'>PLACEHOLDER</div>
 
-    <!-- <script type='text/javascript' src=></script> -->
-</head>
-
-<body >
-    <!-- <h1>Weather Stats Generator</h1>
-    <div> <h3>Select City:</h3> 
-    <input type='text' /></div>
-   
-    <h3>Select Date Range:</h3>
-    <input type='date' id='start' />
-    <input type='date' id='end' />
-    <button onclick='displayMin()'>Get data</button> -->
-    <!-- // event handler here
-    // onclick, invoke functions (min, max, etc.) -->
-
-    <input type='text' id='cityInput' placeholder= 'enter city name' />
-    <input type='text' id='countryInput' placeholder= 'enter country code' />
-    <button id='submitButton'>Submit</button>
-
-    <div id='testText3'>test</div>
-    <button id='testButton2'>testing</button>
-
-
-<!-- 
-
-    <h3>Min Temperature for _____ from _____ to _____: </h3>
-    <h3>Max Temperature for _____ from _____ to _____: </h3>
-    <h3>Mode Temperature for _____ from _____ to _____: </h3>
-    <h3>Mean Temperature for _____ from _____ to _____: </h3> -->
-    <script src="config.js"></script>
-
-    <script src="index.js"></script>
-
-</body>
-
-
+        <script src="config.js"></script>
+        <script src="index.js"></script>
+    </body>
 </html>
