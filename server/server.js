@@ -1,9 +1,9 @@
 const express = require('express');
-const process = require('process')
+const process = require('process');
 const app = express();
 const ROOT = require('app-root-path');
 
-const publicFolder = ROOT + '/public'
+const publicFolder = ROOT + '/public';
 
 // console.log('publicFolder', publicFolder)
 

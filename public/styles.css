@@ -1,14 +1,18 @@
-/* body {
+body {
     font-family: georgia;
     color: rgb(53, 4, 4);
     background-color: beige;
     text-align: center;
-} */
+}
 
 table {
     border-collapse: collapse;
+    margin: auto;
 }
 
 table, th, td {
     border: 1px solid black;
 }
+
+
+

@@ -48,23 +48,23 @@ class DataTracker {
 }
 
 function promisedWeatherStats (cityName, countryCode) {
-  const trackers = {}
-  const stats = ['morning', 'day', 'night', 'humidity']
+  const trackers = {};
+  const stats = ['morning', 'day', 'night', 'humidity'];
   stats.forEach((statsName) => {
-    trackers[statsName] = new DataTracker()
+    trackers[statsName] = new DataTracker();
   })
 
   return promisedForecast(cityName, countryCode).then(function (data) {
     for (let dayData of data.data.list) {
-      trackers['humidity'].insert(dayData.humidity)
-      trackers['morning'].insert(dayData.temp.morn)
-      trackers['day'].insert(dayData.temp.day)
-      trackers['night'].insert(dayData.temp.night)
+      trackers['humidity'].insert(dayData.humidity);
+      trackers['morning'].insert(dayData.temp.morn);
+      trackers['day'].insert(dayData.temp.day);
+      trackers['night'].insert(dayData.temp.night);
     }
 
     const result = {}
     for (let trackerName in trackers) {
-      tracker = trackers[trackerName]
+      tracker = trackers[trackerName];
       result[trackerName] = {
         'min': tracker.showMin(),
         'max': tracker.showMax(),
@@ -72,17 +72,17 @@ function promisedWeatherStats (cityName, countryCode) {
         'mode': tracker.showMode()
       }
     }
-    return result
+    return result;
   })
 }
 
 
 function promisedForecast(cityName, countryCode) {
-  const BASE_API_URL = 'http://api.openweathermap.org/data/2.5'
-  const FORECAST_ENDPOINT = '/forecast/daily'
-  const queryString = `?cnt=16&APPID=${API_KEY}&q=${cityName},${countryCode}&units=imperial`
-  const endpoint = BASE_API_URL + FORECAST_ENDPOINT + queryString
-  return axios.get(endpoint)
+  const BASE_API_URL = 'http://api.openweathermap.org/data/2.5';
+  const FORECAST_ENDPOINT = '/forecast/daily';
+  const queryString = `?cnt=16&APPID=${API_KEY}&q=${cityName},${countryCode}&units=imperial`;
+  const endpoint = BASE_API_URL + FORECAST_ENDPOINT + queryString;
+  return axios.get(endpoint);
 }
 
 
@@ -99,42 +99,42 @@ function generateWeatherDataMatrix(weatherData) {
     'night': 3,
     'humidity': 4
   }
-  const nRows = Object.keys(statsRow).length + 1
-  const nCols = Object.keys(typeCol).length + 1
-  const dataMatrix = generateEmptyMatrix(nRows, nCols)
+  const nRows = Object.keys(statsRow).length + 1;
+  const nCols = Object.keys(typeCol).length + 1;
+  const dataMatrix = generateEmptyMatrix(nRows, nCols);
 
   for (let stat in statsRow) {
-    const rowNumber = statsRow[stat]
-    dataMatrix[rowNumber][0] = stat
+    const rowNumber = statsRow[stat];
+    dataMatrix[rowNumber][0] = stat;
   }
 
   for (let type in typeCol) {
-    const colNumber = typeCol[type]
-    dataMatrix[0][colNumber] = type
+    const colNumber = typeCol[type];
+    dataMatrix[0][colNumber] = type;
   }
 
   for (let typeName in weatherData) {
-    stats = weatherData[typeName]
+    stats = weatherData[typeName];
     for (let stat in stats) {
-      const row = statsRow[stat]
-      const col = typeCol[typeName]
-      dataMatrix[row][col] = stats[stat]
+      const row = statsRow[stat];
+      const col = typeCol[typeName];
+      dataMatrix[row][col] = stats[stat];
     }
   }
-  return dataMatrix
+  return dataMatrix;
 }
 
 
 function generateEmptyMatrix(nRows, nCols) {
-  const matrix = []
+  const matrix = [];
   for (let i = 0; i < nRows; i++) {
-    const row = []
-    matrix.push(row)
+    const row = [];
+    matrix.push(row);
     for (let j = 0; j < nCols; j++) {
-      row.push(null)
+      row.push(null);
     }
   }
-  return matrix
+  return matrix;
 }
 
 
@@ -159,12 +159,12 @@ function init () {
   submitButton.addEventListener('click', function () {
     promisedWeatherStats(cityInput.value, countryInput.value)
       .then(function (weatherData) {
-        resultText.innerHTML = `Weather stats for ${cityInput.value}`
-        const dataMatrix = generateWeatherDataMatrix(weatherData)
-        fillTable(dataMatrix)
+        resultText.innerHTML = `Humidity percentage and weather temperatures for ${cityInput.value} in degrees Fahrenheit`
+        const dataMatrix = generateWeatherDataMatrix(weatherData);
+        fillTable(dataMatrix);
       })
       .catch(function (error) {
-        resultText.innerHTML = `${error}`
+        resultText.innerHTML = `${error}`;
       })
   })
 }
