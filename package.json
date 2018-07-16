@@ -1,7 +1,7 @@
 {
-  "name": "Tivix",
+  "name": "Get Weather Stats",
   "version": "1.0.0",
-  "description": "Tivix take home challenge - weather stats app",
+  "description": "weather stats app",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yuchaodong/Tivix.git"
+    "url": "git+https://github.com/yuchaodong/GetWeatherStats.git"
   },
   "author": "YuChao Dong",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/yuchaodong/Tivix/issues"
+    "url": "https://github.com/yuchaodong/GetWeatherStats/issues"
   },
-  "homepage": "https://github.com/yuchaodong/Tivix#readme",
+  "homepage": "https://github.com/yuchaodong/GetWeatherStats#readme",
   "dependencies": {
     "app-root-path": "2.1.0",
     "axios": "^0.18.0",
