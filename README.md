@@ -1,6 +1,6 @@
 Instructions:
 To clone the repo, enter command: <br />
-`git clone https://github.com/yuchaodong/tivix.git`
+`git clone git@github.com:yuchaodong/GetWeatherStats.git`
 
 Before using, make sure you have the following dependencies installed: <br />
 To install express, enter command: `npm install express`; <br />
