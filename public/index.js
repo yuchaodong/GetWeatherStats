@@ -18,8 +18,6 @@ class DataTracker {
   }
 
   showMean() {
-    // return 3
-    // return sum(this.values)/this.values.length
     return (this.sum / this.count).toFixed(1);
   }
 
@@ -49,26 +47,6 @@ class DataTracker {
   }
 }
 
-// t = new DataTracker()
-// t.insert(5)
-// t.insert(7)
-// t.showMin()
-// t.insert(4)
-// t.showMin()
-
-/*
-why use interfaces? why separate interface from implementation?
-1. simplifies things. To figure out what something does, 
-dont have to look at implementation, JUST at interface
-2. contract - dont NEED to know implmentation to still use it.
-3. contract is TRUST - only works if the other part follows through
-
-4. can upgrade implementation at any time
-can be many kinds of implemntations - can cah
-
-5. (most confusing) we can swap different implementations
-BASED ON what class you're using (ie. inheritance)
-*/
 
 function promisedWeatherStats (cityName, countryCode) {
   const trackers = {};
