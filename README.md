@@ -15,5 +15,8 @@ To run the app, enter command: `node server/server.js`; <br />
 About the app: <br />
 This is a weather app that collects temperature data and generates statistics pertinent to temperatures (such as maximum and mininum temperatures, mode temperature, and average temperature).
 
+Note: <br />
+The API key expires Aug 1, 2018. Search requests will return a 401 status code from Aug 2 onward.
+
 How to use the app: <br />
 The user enters a city name and country code for the city for which they would like to get info from. For example, for Sydney, Australia, they can enter 'sydney' for city name, and 'aus' for country code (it is not case-sensitve), then click submit for Sydney's weather data. The API tries its best with typos. For instance, if the user enters 'sydney' as city name, and 'au' as country code, the data for Sydney will show up. However, if the user enters 'a' as country code for 'sydney', a 404 error will appear. As a reminder, the temperatures are in degrees Fahrenheit.
